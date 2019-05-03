@@ -13,6 +13,7 @@ export interface Event {
   locationX: string;
   begginingInTime: string;
   begginingDate: string;
+  isPublicEvent: boolean;
   //online: boolean;
 }
 
@@ -84,7 +85,14 @@ export const EventModel: SequelizeStaticAndInstance['Model'] = db.connect.define
       validate: {
         notEmpty: true
       }
-    }
+    },
+    isPublicEvent: {
+      type: Sequelize.BOOLEAN,
+      allowNull: false,
+      validate: {
+        notEmpty: false
+      }
+    },
     // online: {
     //   type: Sequelize.BOOLEAN,
     //   allowNull: false,

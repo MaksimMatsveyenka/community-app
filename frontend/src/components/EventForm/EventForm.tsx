@@ -1,7 +1,13 @@
 import { FormGroup, TextField } from '@material-ui/core';
 import * as React from 'react';
 
-import { CaButton, CaDatePickers, CaEventDescription, CaTimePickers } from 'components';
+import {
+  CaButton,
+  CaDatePickers,
+  CaEventDescription,
+  CaTimePickers,
+  CaCheckbox,
+  } from 'components';
 import { frontEndValidationEventRegister } from 'constes';
 import { Event, SettingFormType } from 'models';
 import { I18n } from 'react-i18next';
@@ -37,6 +43,9 @@ export class EventForm extends React.Component<EventFormProps, EventFormState> {
       locationX: '',
       begginingInTime: '2019-05-19',
       begginingDate: '00:00',
+      isPublicEvent: false,
+      checkboxPublic: false,
+      checkboxPersonal: false,
       isTitleValid: false,
       isDescriptionValid: false,
       isCityValid: false,
@@ -45,6 +54,7 @@ export class EventForm extends React.Component<EventFormProps, EventFormState> {
       isLocationValid: false,
       isBegginigInTimeValid: false,
       isBegginigIDateValid: false,
+      isPublicEventValid: false,
       touched: {
         title: false,
         description: false,
@@ -54,6 +64,7 @@ export class EventForm extends React.Component<EventFormProps, EventFormState> {
         locationX: false,
         begginingInTime: false,
         begginingDate: false,
+        isPublicEvent: false,
       },
       titleErrors: [],
       descriptionErrors: [],
@@ -63,6 +74,7 @@ export class EventForm extends React.Component<EventFormProps, EventFormState> {
       locationErrors: [],
       begginingInTimeErrors: [],
       begginingDateErrors: [],
+      // isPublicEventErrors: [],
     };
   }
 
@@ -74,6 +86,22 @@ export class EventForm extends React.Component<EventFormProps, EventFormState> {
     this.setState({ [name]: value } as EventFormState);
   }
 
+  public checkboxChange = (label: string): void => {
+    if (label === 'Public') {
+      this.setState({
+        isPublicEvent: true,
+        checkboxPublic: !this.state.checkboxPublic,
+        checkboxPersonal: false,
+      });
+    } else if (label === 'Personal') {
+      this.setState({
+        isPublicEvent: false,
+        checkboxPersonal: !this.state.checkboxPersonal,
+        checkboxPublic: false,
+      });
+    }
+  }
+
   public isValidate(): boolean {
     let titleErrors: string[] = [];
     let descriptionErrors: string[] = [];
@@ -83,6 +111,7 @@ export class EventForm extends React.Component<EventFormProps, EventFormState> {
     let locationErrors: string[] = [];
     let begginingInTimeErrors: string[] = [];
     let begginingDateErrors: string[] = [];
+    // let isPublicEventErrors: string[] = [];
 
     if (!this.state.title) {
       titleErrors.push(frontEndValidationEventRegister.title.required);
@@ -209,6 +238,15 @@ export class EventForm extends React.Component<EventFormProps, EventFormState> {
       );
     }
 
+    // if (!this.state.isPublicEvent) {
+    //   isPublicEventErrors.push(frontEndValidationEventRegister.isPublicEvent.length);
+    // } else {
+    //   isPublicEventErrors = this.removeElFromArrByValue(
+    //     isPublicEventErrors,
+    //     frontEndValidationEventRegister.isPublicEvent.length
+    //   );
+    // }
+
     this.setState({
       titleErrors,
       descriptionErrors,
@@ -217,7 +255,8 @@ export class EventForm extends React.Component<EventFormProps, EventFormState> {
       addressErrors,
       locationErrors,
       begginingInTimeErrors,
-      begginingDateErrors
+      begginingDateErrors,
+      // isPublicEventErrors,
     });
 
     if (titleErrors.length <= 0) {
@@ -276,6 +315,13 @@ export class EventForm extends React.Component<EventFormProps, EventFormState> {
       return false;
     }
 
+    // if (isPublicEventErrors.length <= 0) {
+      this.setState({ isPublicEventValid: true });
+    // } else {
+    //   this.setState({ isPublicEventValid: false });
+    //   return false;
+    // }
+
     return true;
   }
 
@@ -293,6 +339,7 @@ export class EventForm extends React.Component<EventFormProps, EventFormState> {
         locationX: this.state.locationX,
         begginingInTime: this.state.begginingInTime,
         begginingDate: this.state.begginingDate,
+        isPublicEvent: this.state.isPublicEvent,
       };
 
       if (this.props.config === SettingFormType.EditEvent) {
@@ -369,7 +416,19 @@ export class EventForm extends React.Component<EventFormProps, EventFormState> {
                   onChange={this.handleChange}
                   error={!this.state.begginingInTime && this.state.touched.begginingInTime}
                 />
-                  <CaEventDescription />
+                <CaEventDescription />
+                <CaCheckbox
+                  label={'Public'}
+                  onChange={this.checkboxChange}
+                  isChecked={this.state.checkboxPublic}
+                  error={!this.state.isPublicEvent && this.state.touched.isPublicEvent}
+                />
+                <CaCheckbox
+                  label={'Personal'}
+                  onChange={this.checkboxChange}
+                  isChecked={this.state.checkboxPersonal}
+                  // error={!this.state.isPublicEvent && this.state.touched.isPublicEvent}
+                />
                 <CaButton
                   color='primary'
                   type='submit'

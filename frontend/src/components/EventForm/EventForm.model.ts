@@ -12,6 +12,9 @@ export interface EventFormState {
     begginingDate: string;
     createAt?: Date;
     updatedAt?: Date;
+    isPublicEvent: boolean;
+    checkboxPublic: boolean;
+    checkboxPersonal: boolean;
     isTitleValid: boolean;
     isDescriptionValid: boolean;
     isCityValid: boolean;
@@ -20,6 +23,7 @@ export interface EventFormState {
     isLocationValid: boolean;
     isBegginigInTimeValid: boolean;
     isBegginigIDateValid: boolean;
+    isPublicEventValid: boolean;
     touched: {
         title: boolean;
         description: boolean;
@@ -29,6 +33,7 @@ export interface EventFormState {
         locationX: boolean;
         begginingInTime: boolean;
         begginingDate: boolean;
+        isPublicEvent: boolean;
     };
     titleErrors: string[];
     descriptionErrors: string[];
@@ -38,6 +43,7 @@ export interface EventFormState {
     locationErrors: string[];
     begginingInTimeErrors: string[];
     begginingDateErrors: string[];
+    // isPublicEventErrors: string[];
 }
 
 export interface EventFormProps {

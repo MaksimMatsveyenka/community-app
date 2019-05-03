@@ -14,7 +14,7 @@ import location from 'assets/svg/icon-location.svg';
 
 export class CaEventCard extends React.PureComponent<EventCardProps> {
   public render(): JSX.Element {
-    const { id, title, city, begginingDate } = this.props;
+    const { id, title, city, begginingDate, isPublicEvent } = this.props;
     const str = 'Java, C++, Ruby, Go';
     const skills = changeCommaColor(str);
 
@@ -42,6 +42,8 @@ export class CaEventCard extends React.PureComponent<EventCardProps> {
                     <img src={calendarGreen} alt='' />
                     <div className='event-card__date'>
                       {begginingDate}
+
+                      {isPublicEvent ? 'public' : 'private'}
                     </div>
                   </div>
                   <div className='event-card__location-info'>

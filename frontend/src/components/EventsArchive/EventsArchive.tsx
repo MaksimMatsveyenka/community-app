@@ -43,6 +43,7 @@ export class EventsArchive extends React.Component<EventsArchiveProps> {
                   place={event.place}
                   begginingInTime={event.begginingInTime}
                   begginingDate={event.begginingDate}
+                  isPublicEvent={event.isPublicEvent}
                 />
               );
             })

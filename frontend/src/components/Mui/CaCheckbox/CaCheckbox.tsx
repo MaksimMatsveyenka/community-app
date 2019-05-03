@@ -9,15 +9,13 @@ import { CaCheckboxProps } from './CaCheckbox.model';
 import './CaCheckbox.scss';
 
 export class CaCheckbox extends React.Component<CaCheckboxProps> {
-  state = {
-    isChecked: false,
+  public state = {
+    isChecked: this.props.isChecked,
   };
 
-  toggleChange = () => {
-    this.setState({
-      isChecked: !this.state.isChecked,
-    });
-  };
+  public toggleChange = () => {
+    this.props.onChange(this.props.label);
+  }
 
   public render(): JSX.Element {
     const { label } = this.props;
@@ -28,8 +26,8 @@ export class CaCheckbox extends React.Component<CaCheckboxProps> {
           control={
             <Checkbox
               onChange={this.toggleChange}
-              checked={this.state.isChecked}
-              className={this.state.isChecked ? 'checked' : 'unchecked'}
+              checked={this.props.isChecked}
+              className={this.props.isChecked ? 'checked' : 'unchecked'}
               icon={<CheckBoxOutlineBlankIcon />}
               checkedIcon={<CheckBoxIcon />}
             />

@@ -250,7 +250,9 @@ export interface FrontEndValidationErrorsEventRegister {
   locationX: { length: string, required: string };
   begginingInTime: { length: string, required: string };
   begginingDate: { length: string, required: string };
+  isPublicEvent: { length: string, required: string };
 }
+
 export interface Leaders {
   userToken: string;
   name: number;
@@ -365,6 +367,7 @@ export interface Event {
   locationX: string;
   begginingInTime: string;
   begginingDate: string;
+  isPublicEvent: boolean;
   //online: boolean;
   createAt?: Date;
   updatedAt?: Date;
