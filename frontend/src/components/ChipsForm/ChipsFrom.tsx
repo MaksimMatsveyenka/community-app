@@ -48,9 +48,15 @@ export class ChipsForm extends React.Component<ChipsFormProps, ChipsFormState> {
           { overflowY: 'scroll' }
         }
       >
-        <CaInput placeholder='Search' darkTheme={true}/>
+        <CaInput
+          placeholder='Search'
+          darkTheme={true}
+          id='input-placeholder'
+          disableUnderline={true}
+          type='text'
+        />
         <div className='chips-form__checkboxes'>
-          { checkboxes }
+          {checkboxes}
         </div>
       </form>
     );
