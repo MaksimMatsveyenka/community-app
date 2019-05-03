@@ -1,28 +1,28 @@
-@import "../../../style/settings.scss";
+@import '../../../style/settings.scss';
 
 .ca-checkbox {
   label {
     margin: 0;
-    height: 4rem;
-    width: 7.2rem;
+    height: 2.4rem;
+    min-width: min-content;
+    width: max-content;
     display: flex;
     justify-content: space-between;
 
     span:first-child {
-      height: 2.4rem;
-      width: 2.4rem;
+      height: 2.3rem;
+      width: 2.3rem;
       border-radius: 0.4rem;
 
       svg {
-        height: 3.4rem;
-        width: 3.4rem;
+        height: 3.3rem;
+        width: 3.3rem;
       }
     }
 
     span:last-child {
-      font-family: "Source Sans Pro", sans-serif;
+      font-family: 'Source Sans Pro', sans-serif;
       font-size: 1.4rem;
-      color: $color-gray;
     }
   }
 }
@@ -30,10 +30,18 @@
 .checked {
   svg { path:last-child { color: $color-green; } }
   span:first-child { background: $color-white; }
+  & + span { color: $color-gray; }
 }
 
-.unchecked { 
+.checkedTheme {
+  svg { path:last-child { color: $color-green; } }
+  span:first-child { background: $color-white; }
+  & + span { color: $color-green; }
+}
+
+.unchecked {
   svg { path:first-child { opacity: 0; } }
   span:first-child { background: $bg-gray-dark; }
   span:last-child { border: 0.1rem solid $color-gray; }
+  & + span { color: $color-gray; }
 }

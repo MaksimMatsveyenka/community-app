@@ -17,3 +17,4 @@ export * from './CaTimePickers';
 export * from './CaLocSelect';
 export * from './CaInput';
 export * from './CaEventsTabs';
+export * from './CaChips';

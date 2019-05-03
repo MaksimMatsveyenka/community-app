@@ -5,8 +5,8 @@ import './ControlPanel.scss';
 import {
   CaCheckbox,
   CaDatePicker,
-  CaInput,
   CaLocSelect,
+  CaChips,
 } from '../../components/Mui';
 
 import { ControlPanelState } from './ControlPanel.model';
@@ -75,7 +75,7 @@ export class ControlPanel extends React.Component<any, ControlPanelState> {
           <div className='ca-control-panel__second-row'>
             <div className='ca-control-panel__technology'>
               <h3 className='ca-control-panel__heading'>Technology</h3>
-              <CaInput />
+              <CaChips />
             </div>
           </div>
         </div>

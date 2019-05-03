@@ -1,0 +1,27 @@
+@import '../../../style/settings.scss';
+
+.chips {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  &__placeholder {
+    font-family: 'Source Sans Pro';
+    margin-left: 0.8rem;
+    margin-left: 0.8rem;
+    line-height: 1.9rem;
+    color: $color-gray;
+    font-size: 1.5rem;
+  }
+
+  &__delete-btn {
+    background: url('../../../assets/svg/chips-clear.svg');
+    border-style: none;
+    position: absolute;
+    cursor: pointer;
+    height: 1.4rem;
+    width: 1.4rem;
+    outline: none;
+    right: 1.6rem;
+  }
+}
