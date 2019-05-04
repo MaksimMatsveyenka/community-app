@@ -49,7 +49,6 @@ export class CurrentEvents extends React.Component<CurrentEventsProps> {
                   id={Number(event.id)}
                   title={event.title}
                   city={event.city}
-                  place={event.place}
                   begginingInTime={event.begginingInTime}
                   begginingDate={event.begginingDate}
                   isPublicEvent={event.isPublicEvent}
@@ -69,7 +68,6 @@ export class CurrentEvents extends React.Component<CurrentEventsProps> {
                   id={Number(event.id)}
                   title={event.title}
                   city={event.city}
-                  place={event.place}
                   begginingInTime={event.begginingInTime}
                   begginingDate={event.begginingDate}
                   isPublicEvent={event.isPublicEvent}

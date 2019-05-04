@@ -1,35 +1,88 @@
-.ca-game-form {
-    &__container {
-        width: 144rem;
-        margin: 0 auto;
-        padding: 4rem;
-        background-color: white;
-        font-size:  1.6rem;
-    }
+@import "../../style/settings.scss";
 
-    &__error {
-        color: #f92a42;
-        display: block;
-        padding: 0.5rem 1rem;
-        background-color: rgba(239, 38, 78, .4);
-        border-radius: 1rem;
-        margin-top: 1rem;
-    }
+.createForm {
+	width: 100%;
+	background-color: $bg-gray-dark;
 
-    &__game-btn {
-      margin-top: 2rem;
-      font-size: 1.6rem;
-    }
+	&__container {
+		width: 120rem;
+		margin: 0 auto;
+	}
+
+	&__legend {
+		color: $color-white;
+		font-size: 4.0rem;
+		font-weight: 600;
+		line-height: 6.4rem;
+		padding: 2.4rem 0 1.6rem;
+	}
+
+	&__items {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+
+		&-title {
+			color: $color-white-dark;
+			font-size: 2rem;
+			font-weight: 600;
+			line-height: 2.5rem;
+			margin-bottom: 1.6rem;
+		}
+
+		&-information {
+		}
+
+		&-pictures {
+		}
+	}
+
+	&__picture-container {
+		height: 43.5rem;
+		width: 58.6rem;
+		border-radius: 0.6rem;
+		background-color: $bg-gray;
+	}
+
+	&__information-container {
+		width: 58.6rem;
+		border-radius: 0.6rem;
+		background-color: $bg-gray;
+	}
 }
 
-@media(max-width:320px) {
-    .ca-game-form {
-        &__container{
-            padding: 3.2rem;
-        }
+// .ca-game-form {
+//     &__container {
+//         width: 144rem;
+//         margin: 0 auto;
+//         padding: 4rem;
+//         background-color: white;
+//         font-size:  1.6rem;
+//     }
 
-        &__game-btn {
-            margin-left: 2,5rem;
-        }
-    }
+//     &__error {
+//         color: #f92a42;
+//         display: block;
+//         padding: 0.5rem 1rem;
+//         background-color: rgba(239, 38, 78, .4);
+//         border-radius: 1rem;
+//         margin-top: 1rem;
+//     }
+
+//     &__game-btn {
+//       margin-top: 2rem;
+//       font-size: 1.6rem;
+//     }
+// }
+
+@media(max-width:320px) {
+	.ca-game-form {
+		&__container{
+			padding: 3.2rem;
+		}
+
+		&__game-btn {
+			margin-left: 2,5rem;
+		}
+	}
 }

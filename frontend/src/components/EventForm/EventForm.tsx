@@ -24,12 +24,6 @@ const MIN_LENGTH_DESCRIPTION = 10;
 const MAX_LENGTH_DESCRIPTION = 250;
 const MIN_LENGTH_CITY = 3;
 const MAX_LENGTH_CITY = 50;
-const MIN_LENGTH_PLACE = 3;
-const MAX_LENGTH_PLACE = 50;
-const MIN_LENGTH_ADDRESS = 3;
-const MAX_LENGTH_ADDRESS = 70;
-const MIN_LENGTH_LOCATION = 3;
-const MAX_LENGTH_LOCATION = 50;
 
 export class EventForm extends React.Component<EventFormProps, EventFormState> {
   constructor(props: EventFormProps) {
@@ -39,9 +33,6 @@ export class EventForm extends React.Component<EventFormProps, EventFormState> {
       title: '',
       description: 'Minskkkkkkk',
       city: '',
-      place: '',
-      address: '',
-      locationX: '',
       begginingInTime: '2019-05-19',
       begginingDate: '00:00',
       isPublicEvent: true,
@@ -53,18 +44,12 @@ export class EventForm extends React.Component<EventFormProps, EventFormState> {
       isTitleValid: false,
       isDescriptionValid: false,
       isCityValid: false,
-      isPlaceValid: false,
-      isAddressValid: false,
-      isLocationValid: false,
       isBegginigInTimeValid: false,
       isBegginigIDateValid: false,
       touched: {
         title: false,
         description: false,
         city: false,
-        maxRooms: false,
-        address: false,
-        locationX: false,
         begginingInTime: false,
         begginingDate: false,
         isPublicEvent: false,
@@ -73,9 +58,6 @@ export class EventForm extends React.Component<EventFormProps, EventFormState> {
       titleErrors: [],
       descriptionErrors: [],
       cityErrors: [],
-      placeErrors: [],
-      addressErrors: [],
-      locationErrors: [],
       begginingInTimeErrors: [],
       begginingDateErrors: [],
     };
@@ -121,9 +103,6 @@ export class EventForm extends React.Component<EventFormProps, EventFormState> {
     let titleErrors: string[] = [];
     let descriptionErrors: string[] = [];
     let cityErrors: string[] = [];
-    let placeErrors: string[] = [];
-    let addressErrors: string[] = [];
-    let locationErrors: string[] = [];
     let begginingInTimeErrors: string[] = [];
     let begginingDateErrors: string[] = [];
 
@@ -181,59 +160,6 @@ export class EventForm extends React.Component<EventFormProps, EventFormState> {
       );
     }
 
-    if (!this.state.place) {
-      placeErrors.push(frontEndValidationEventRegister.place.length);
-    } else {
-      placeErrors = this.removeElFromArrByValue(
-        placeErrors,
-        frontEndValidationEventRegister.place.length
-      );
-    }
-
-    if (this.state.place.length < MIN_LENGTH_PLACE || this.state.place.length > MAX_LENGTH_PLACE) {
-      placeErrors.push(frontEndValidationEventRegister.place.length);
-    } else {
-      placeErrors = this.removeElFromArrByValue(
-        placeErrors,
-        frontEndValidationEventRegister.place.length
-      );
-    }
-
-    if (!this.state.address) {
-      addressErrors.push(frontEndValidationEventRegister.address.length);
-    } else {
-      addressErrors = this.removeElFromArrByValue(
-        addressErrors,
-        frontEndValidationEventRegister.address.length
-      );
-    }
-
-    if (this.state.address.length < MIN_LENGTH_ADDRESS || this.state.address.length > MAX_LENGTH_ADDRESS) {
-      addressErrors.push(frontEndValidationEventRegister.address.length);
-    } else {
-      addressErrors = this.removeElFromArrByValue(
-        addressErrors,
-        frontEndValidationEventRegister.address.length
-      );
-    }
-
-    if (!this.state.locationX) {
-      locationErrors.push(frontEndValidationEventRegister.locationX.length);
-    } else {
-      locationErrors = this.removeElFromArrByValue(
-        locationErrors,
-        frontEndValidationEventRegister.locationX.length
-      );
-    }
-
-    if (this.state.locationX.length < MIN_LENGTH_LOCATION || this.state.locationX.length > MAX_LENGTH_LOCATION) {
-      locationErrors.push(frontEndValidationEventRegister.locationX.length);
-    } else {
-      locationErrors = this.removeElFromArrByValue(
-        locationErrors,
-        frontEndValidationEventRegister.locationX.length);
-    }
-
     if (!this.state.begginingInTime) {
       begginingInTimeErrors.push(frontEndValidationEventRegister.begginingInTime.length);
     } else {
@@ -256,9 +182,6 @@ export class EventForm extends React.Component<EventFormProps, EventFormState> {
       titleErrors,
       descriptionErrors,
       cityErrors,
-      placeErrors,
-      addressErrors,
-      locationErrors,
       begginingInTimeErrors,
       begginingDateErrors,
     });
@@ -281,27 +204,6 @@ export class EventForm extends React.Component<EventFormProps, EventFormState> {
       this.setState({ isCityValid: true });
     } else {
       this.setState({ isCityValid: false });
-      return false;
-    }
-
-    if (placeErrors.length <= 0) {
-      this.setState({ isPlaceValid: true });
-    } else {
-      this.setState({ isPlaceValid: false });
-      return false;
-    }
-
-    if (addressErrors.length <= 0) {
-      this.setState({ isAddressValid: true });
-    } else {
-      this.setState({ isAddressValid: false });
-      return false;
-    }
-
-    if (locationErrors.length <= 0) {
-      this.setState({ isLocationValid: true });
-    } else {
-      this.setState({ isLocationValid: false });
       return false;
     }
 
@@ -331,9 +233,6 @@ export class EventForm extends React.Component<EventFormProps, EventFormState> {
         title: this.state.title,
         description: this.state.description,
         city: this.state.city,
-        place: this.state.place,
-        address: this.state.address,
-        locationX: this.state.locationX,
         begginingInTime: this.state.begginingInTime,
         begginingDate: this.state.begginingDate,
         isPublicEvent: this.state.isPublicEvent,
@@ -365,12 +264,17 @@ export class EventForm extends React.Component<EventFormProps, EventFormState> {
       <I18n>
         {
           (t) => (
-            <div>
-              <form
+            <div className='createForm'>
+              <div className='createForm__container'>
+                <div className='createForm__legend'>Create New Event</div>
+                <div className='createForm__items'>
+                  <div className='createForm__items-information'>
+                    <div className='createForm__items-title'>Event Information</div>
+                    <div className='createForm__information-container'>
+                    <form
                 className='ca-game-form__container'
                 onSubmit={this.handleSubmit}
               >
-                <h2>Create New Event</h2>
                 {arrayOfInputs.map((input: string) => { // keys of received object
                   return (
                     <FormGroup key={input}>
@@ -447,9 +351,6 @@ export class EventForm extends React.Component<EventFormProps, EventFormState> {
                     !this.state.title ||
                     //!this.state.description ||
                     !this.state.city ||
-                    !this.state.place ||
-                    !this.state.address ||
-                    !this.state.locationX ||
                     !this.state.begginingInTime ||
                     !this.state.begginingDate
                   }
@@ -457,6 +358,14 @@ export class EventForm extends React.Component<EventFormProps, EventFormState> {
                   {this.props.config}
                 </CaButton>
               </form>
+                    </div>
+                  </div>
+                  <div className='createForm__items-pictures'>
+                    <div className='createForm__items-title'>Event Picture</div>
+                    <div className='createForm__picture-container'></div>
+                  </div>
+                </div>
+              </div>
             </div>
           )
         }

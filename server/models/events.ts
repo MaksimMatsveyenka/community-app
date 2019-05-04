@@ -7,10 +7,7 @@ export interface Event {
   id: number;
   title: string;
   description: string;
-  city: string;
-  place: string;
-  address: string;
-  locationX: string;
+  city: string;;
   begginingInTime: string;
   begginingDate: string;
   isPublicEvent: boolean;
@@ -45,27 +42,6 @@ export const EventModel: SequelizeStaticAndInstance['Model'] = db.connect.define
       }
     },
     city: {
-      type: Sequelize.STRING(50),
-      allowNull: false,
-      validate: {
-        notEmpty: true
-      }
-    },
-    place: {
-      type: Sequelize.STRING(50),
-      allowNull: false,
-      validate: {
-        notEmpty: true
-      }
-    },
-    address: {
-      type: Sequelize.STRING(50),
-      allowNull: false,
-      validate: {
-        notEmpty: true
-      }
-    },
-    locationX: {
       type: Sequelize.STRING(50),
       allowNull: false,
       validate: {

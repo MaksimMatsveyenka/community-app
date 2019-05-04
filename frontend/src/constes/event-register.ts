@@ -13,18 +13,6 @@ export const frontEndValidationEventRegister: FrontEndValidationErrorsEventRegis
         length: 'cityLengthError',
         required: 'cityRequired'
     },
-    place: {
-        length: 'placeLengthError',
-        required: 'placeRequired'
-    },
-    address: {
-        length: 'addressLengthError',
-        required: 'addressRequired'
-    },
-    locationX: {
-        length: 'locationLengthError',
-        required: 'locationRequired'
-    },
     begginingInTime: {
         length: 'begginingInTimeLengthError',
         required: 'begginingInTimeRequired'

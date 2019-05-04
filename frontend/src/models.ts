@@ -245,9 +245,6 @@ export interface FrontEndValidationErrorsEventRegister {
   title: { length: string, required: string };
   description: { length: string, required: string };
   city: { length: string, required: string };
-  place: { length: string, required: string };
-  address: { length: string, required: string };
-  locationX: { length: string, required: string };
   begginingInTime: { length: string, required: string };
   begginingDate: { length: string, required: string };
   isPublicEvent: { length: string, required: string };
@@ -363,9 +360,6 @@ export interface Event {
   title: string;
   description: string;
   city: string;
-  place: string;
-  address: string;
-  locationX: string;
   begginingInTime: string;
   begginingDate: string;
   isPublicEvent: boolean;
@@ -377,9 +371,6 @@ export interface Event {
 export interface EventForSettingForm {
   title: string;
   city: string;
-  place: string;
-  address: string;
-  locationX: string;
 }
 
 export enum Roles {

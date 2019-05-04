@@ -27,8 +27,8 @@ import iconShare from 'assets/svg/icon-share.svg';
 import iconBookmark from 'assets/svg/icon-bookmark--solid.svg';
 import calendarGreen from 'assets/svg/icon-calendar--green.svg';
 import location from 'assets/svg/icon-location.svg';
-// import onlineSvg from 'assets/svg/icon-online.svg';
-// import offlineSvg from 'assets/svg/icon-offline.svg';
+import onlineSvg from 'assets/svg/icon-online.svg';
+import offlineSvg from 'assets/svg/icon-offline.svg';
 
 import { changeCommaColor } from '../../utils/changeCommaColor';
 
@@ -75,11 +75,11 @@ export class EventPageComp extends React.Component<EventProps> {
                               <span className='separator'>></span>
                             </div>
                             <div className='header__title'>{event.title}</div>
-                            {/* {
-                              event.online ?
+                            {
+                              event.isOnlineEvent ?
                                 <img src={onlineSvg} alt='' className='header__online-status' />
                                   : <img src={offlineSvg} alt='' className='header__online-status' />
-                            } */}
+                            }
                           </div>
                           <div className='event-information'>
                             <div className='information-nav'>
