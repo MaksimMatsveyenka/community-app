@@ -33,4 +33,12 @@ export const frontEndValidationEventRegister: FrontEndValidationErrorsEventRegis
         length: 'begginingDateLengthError',
         required: 'begginingDateRequired'
     },
+    isPublicEvent: {
+        length: 'isPublicEventLengthError',
+        required: 'isPublicEventRequired'
+    },
+    isOnlineEvent: {
+        length: 'isOnlineEventLengthError',
+        required: 'isOnlineEventRequired'
+    }
 };

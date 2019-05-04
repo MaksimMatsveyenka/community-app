@@ -4,12 +4,37 @@ import './ControlPanel.scss';
 
 import {
   CaCheckbox,
+  CaChips,
   CaDatePicker,
   CaLocSelect,
-  CaChips,
 } from '../../components/Mui';
 
-export class ControlPanel extends React.Component {
+import { ControlPanelState } from './ControlPanel.model';
+
+export class ControlPanel extends React.Component<any, ControlPanelState> {
+  public constructor(props: any) {
+    super(props);
+
+    this.state = {
+      online: false,
+      offline: false,
+    };
+  }
+
+  public checkOnlineStatus = (label: string): void => {
+    if (label === 'Online') {
+      this.setState({
+        online: !this.state.online,
+        offline: false,
+      });
+    } else if (label === 'Offline') {
+      this.setState({
+        offline: !this.state.offline,
+        online: false,
+      });
+    }
+  }
+
   public render(): JSX.Element {
     return (
       <section className='ca-control-panel'>
@@ -34,8 +59,16 @@ export class ControlPanel extends React.Component {
             <div className='ca-control-panel__event-type'>
               <h3 className='ca-control-panel__heading'>Event type</h3>
               <div className='ca-control-panel__checkbox-container'>
-                <CaCheckbox label={'Online'}/>
-                <CaCheckbox label={'Offline'}/>
+                <CaCheckbox
+                  label={'Online'}
+                  isChecked={this.state.online}
+                  onChange={this.checkOnlineStatus}
+                />
+                <CaCheckbox
+                  label={'Offline'}
+                  isChecked={this.state.offline}
+                  onChange={this.checkOnlineStatus}
+                />
               </div>
             </div>
           </div>

@@ -22,13 +22,11 @@ const theme = createMuiTheme({
 
 export class CaCheckbox extends React.Component<CaCheckboxProps> {
   public state = {
-    isChecked: false,
+    isChecked: this.props.isChecked,
   };
 
   public toggleChange = () => {
-    this.setState({
-      isChecked: !this.state.isChecked,
-    });
+    this.props.onChange(this.props.label);
   }
 
   public render(): JSX.Element {
@@ -42,8 +40,8 @@ export class CaCheckbox extends React.Component<CaCheckboxProps> {
             control={
               <Checkbox
                 onChange={this.toggleChange}
-                checked={this.state.isChecked}
-                className={this.state.isChecked ? checkedTheme : 'unchecked'}
+                checked={this.props.isChecked}
+                className={this.props.isChecked ? checkedTheme : 'unchecked'}
                 icon={<CheckBoxOutlineBlankIcon />}
                 checkedIcon={<CheckBoxIcon />}
               />

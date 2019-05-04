@@ -28,7 +28,9 @@ export class EventsRepositoryImplementation implements EventsRepository {
           address: event.address,
           locationX: event.locationX,
           begginingInTime: event.begginingInTime,
-          begginingDate: event.begginingDate
+          begginingDate: event.begginingDate,
+          isPublicEvent: event.isPublicEvent,
+          isOnlineEvent: event.isOnlineEvent,
         });
 
         await gameEvent.save();
@@ -107,7 +109,9 @@ export class EventsRepositoryImplementation implements EventsRepository {
             address: event.address,
             locationX: event.locationX,
             begginingInTime: event.begginingInTime,
-            begginingDate: event.begginingDate
+            begginingDate: event.begginingDate,
+            isPublicEvent: event.isPublicEvent,
+            isOnlineEvent: event.isOnlineEvent,
           },
           {
             where: { id: event.id }
