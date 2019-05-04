@@ -36,5 +36,9 @@ export const frontEndValidationEventRegister: FrontEndValidationErrorsEventRegis
     isPublicEvent: {
         length: 'isPublicEventLengthError',
         required: 'isPublicEventRequired'
+    },
+    isOnlineEvent: {
+        length: 'isOnlineEventLengthError',
+        required: 'isOnlineEventRequired'
     }
 };

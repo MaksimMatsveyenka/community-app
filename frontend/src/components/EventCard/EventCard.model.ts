@@ -6,5 +6,5 @@ export interface EventCardProps {
   begginingInTime: string;
   begginingDate: string;
   isPublicEvent: boolean;
-  //online: boolean;
+  isOnlineEvent: boolean;
 }

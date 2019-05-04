@@ -53,6 +53,7 @@ export class CurrentEvents extends React.Component<CurrentEventsProps> {
                   begginingInTime={event.begginingInTime}
                   begginingDate={event.begginingDate}
                   isPublicEvent={event.isPublicEvent}
+                  isOnlineEvent={event.isOnlineEvent}
                 />
               );
             })}
@@ -72,6 +73,7 @@ export class CurrentEvents extends React.Component<CurrentEventsProps> {
                   begginingInTime={event.begginingInTime}
                   begginingDate={event.begginingDate}
                   isPublicEvent={event.isPublicEvent}
+                  isOnlineEvent={event.isOnlineEvent}
                 />
               );
             })

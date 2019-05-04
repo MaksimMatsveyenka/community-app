@@ -251,6 +251,7 @@ export interface FrontEndValidationErrorsEventRegister {
   begginingInTime: { length: string, required: string };
   begginingDate: { length: string, required: string };
   isPublicEvent: { length: string, required: string };
+  isOnlineEvent: { length: string, required: string };
 }
 
 export interface Leaders {
@@ -368,7 +369,7 @@ export interface Event {
   begginingInTime: string;
   begginingDate: string;
   isPublicEvent: boolean;
-  //online: boolean;
+  isOnlineEvent: boolean;
   createAt?: Date;
   updatedAt?: Date;
 }

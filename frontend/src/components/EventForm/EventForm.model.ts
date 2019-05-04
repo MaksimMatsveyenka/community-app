@@ -1,4 +1,4 @@
-import { EventForSettingForm, Event, SettingFormType } from 'models';
+import { Event, EventForSettingForm,  SettingFormType } from 'models';
 
 export interface EventFormState {
     id?: number;
@@ -15,6 +15,9 @@ export interface EventFormState {
     isPublicEvent: boolean;
     checkboxPublic: boolean;
     checkboxPersonal: boolean;
+    isOnlineEvent: boolean;
+    checkboxOnline: boolean;
+    checkboxOffline: boolean;
     isTitleValid: boolean;
     isDescriptionValid: boolean;
     isCityValid: boolean;
@@ -23,7 +26,6 @@ export interface EventFormState {
     isLocationValid: boolean;
     isBegginigInTimeValid: boolean;
     isBegginigIDateValid: boolean;
-    isPublicEventValid: boolean;
     touched: {
         title: boolean;
         description: boolean;
@@ -34,6 +36,7 @@ export interface EventFormState {
         begginingInTime: boolean;
         begginingDate: boolean;
         isPublicEvent: boolean;
+        isOnlineEvent: boolean;
     };
     titleErrors: string[];
     descriptionErrors: string[];
@@ -43,7 +46,6 @@ export interface EventFormState {
     locationErrors: string[];
     begginingInTimeErrors: string[];
     begginingDateErrors: string[];
-    // isPublicEventErrors: string[];
 }
 
 export interface EventFormProps {

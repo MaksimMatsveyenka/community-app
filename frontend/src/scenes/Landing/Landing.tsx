@@ -87,7 +87,7 @@ class LandingComponent extends React.Component<LandingProps> {
                         begginingInTime={event.begginingInTime}
                         begginingDate={event.begginingDate}
                         isPublicEvent={event.isPublicEvent}
-                        //online={event.online}
+                        isOnlineEvent={event.isOnlineEvent}
                       />
                     )
                   })}

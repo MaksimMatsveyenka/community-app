@@ -14,7 +14,7 @@ export interface Event {
   begginingInTime: string;
   begginingDate: string;
   isPublicEvent: boolean;
-  //online: boolean;
+  isOnlineEvent: boolean;
 }
 
 export interface EventModel {
@@ -93,13 +93,13 @@ export const EventModel: SequelizeStaticAndInstance['Model'] = db.connect.define
         notEmpty: false
       }
     },
-    // online: {
-    //   type: Sequelize.BOOLEAN,
-    //   allowNull: false,
-    //   validate: {
-    //     notEmpty: true
-    //   }
-    // }
+    isOnlineEvent: {
+      type: Sequelize.BOOLEAN,
+      allowNull: false,
+      validate: {
+        notEmpty: false
+      }
+    }
   },
   {
     // if freezeTableName is true, sequelize will not try to alter the DAO name to get the table name.
