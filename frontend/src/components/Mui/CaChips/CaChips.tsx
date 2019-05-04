@@ -17,6 +17,16 @@ export class CaChips extends React.Component<any, CaChipsState> {
     this.state = {
       isFormShown: false,
       chips: [],
+      technologies: [
+        { key: 0, isChecked: false, label: 'Python', },
+        { key: 1, isChecked: false, label: 'JavaScript', },
+        { key: 2, isChecked: false, label: 'Java', },
+        { key: 3, isChecked: false, label: 'C++', },
+        { key: 4, isChecked: false, label: 'C#', },
+        { key: 5, isChecked: false, label: 'Go', },
+        { key: 6, isChecked: false, label: 'Ruby', },
+        { key: 7, isChecked: false, label: 'Scala', },
+      ],
     };
 
     this.clearChips = this.clearChips.bind(this);
@@ -31,29 +41,51 @@ export class CaChips extends React.Component<any, CaChipsState> {
   }
 
   public clearChips(): void {
-    this.setState({chips: []});
+    const prevTechnologies = this.state.technologies;
+    prevTechnologies.forEach(item => item.isChecked = false);
+    this.setState({chips: [], technologies: prevTechnologies});
   }
 
-  public chooseTechnologies(value: any, isChecked: boolean): void {
-    const technologies: any[] = this.state.chips;
+  public chooseTechnologies(technology: any): void {
+    const prevTechnologies = this.state.technologies;
+    const chosenItems = this.state.chips;
 
-    if (isChecked) {
-      const isExist = technologies.some(item => item.label === value.label);
-      !isExist ? technologies.push(value) : null;
+    prevTechnologies.forEach(item =>
+      item.label === technology.label ?
+      item.isChecked = !item.isChecked : null
+    );
+
+    if (technology.isChecked) {
+      const isExist = chosenItems.some(item => item.label === technology.label);
+      !isExist ? chosenItems.push(technology) : null;
     } else {
-      const index = technologies.indexOf(value);
-      technologies.splice(index, 1);
+      const index = chosenItems.indexOf(technology);
+      chosenItems.splice(index, 1);
     }
 
-    this.setState({ chips: technologies });
+    this.setState({
+      technologies: prevTechnologies,
+      chips: chosenItems,
+    });
   }
 
   public render(): JSX.Element {
     const handleDelete = (chipsItem: any) => () => {
-      const chipsArray = this.state.chips;
-      const chipToDelete = chipsArray.indexOf(chipsItem);
-      chipsArray.splice(chipToDelete, 1);
-      this.setState({ chips: chipsArray });
+      const prevChips = this.state.chips;
+      const prevTechnologies = this.state.technologies;
+      const chipToDelete = prevChips.indexOf(chipsItem);
+
+      const technologyToUnCheck = prevTechnologies.filter(item =>
+        item.label === chipsItem.label
+      );
+
+      prevTechnologies.forEach(item =>
+        item.label === technologyToUnCheck[0].label ?
+        item.isChecked = false : null
+      );
+
+      prevChips.splice(chipToDelete, 1);
+      this.setState({ chips: prevChips });
     };
 
     return (
@@ -73,7 +105,8 @@ export class CaChips extends React.Component<any, CaChipsState> {
             <button className='chips__delete-btn' onClick={this.clearChips} />
           </Paper>
           <ChipsForm
-            getTechnologies={this.chooseTechnologies}
+            chooseTechnologies={this.chooseTechnologies}
+            technologies={this.state.technologies}
             isShown={this.state.isFormShown}
           />
         </section>

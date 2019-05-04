@@ -34,20 +34,22 @@ export class CaCheckbox extends React.Component<CaCheckboxProps> {
     const checkedTheme = this.props.checkedTheme ? 'checkedTheme' : 'checked';
 
     return (
-      <div className='ca-checkbox'>
-        <FormControlLabel
-          control={
-            <Checkbox
-              onChange={this.toggleChange}
-              checked={this.props.isChecked}
-              className={this.props.isChecked ? 'checked' : 'unchecked'}
-              icon={<CheckBoxOutlineBlankIcon />}
-              checkedIcon={<CheckBoxIcon />}
-            />
-          }
-          label={label}
-        />
-      </div>
+      <MuiThemeProvider theme={theme}>
+        <div className='ca-checkbox'>
+          <FormControlLabel
+            control={
+              <Checkbox
+                onChange={this.toggleChange}
+                checked={this.props.isChecked}
+                className={this.props.isChecked ? checkedTheme : 'unchecked'}
+                icon={<CheckBoxOutlineBlankIcon />}
+                checkedIcon={<CheckBoxIcon />}
+              />
+            }
+            label={label}
+          />
+        </div>
+      </MuiThemeProvider>
     );
   }
 }

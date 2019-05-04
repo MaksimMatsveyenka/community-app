@@ -4,9 +4,9 @@ import './ControlPanel.scss';
 
 import {
   CaCheckbox,
+  CaChips,
   CaDatePicker,
   CaLocSelect,
-  CaChips,
 } from '../../components/Mui';
 
 import { ControlPanelState } from './ControlPanel.model';
